@@ -1,3 +1,4 @@
+const colorOptions = Array.from(document.getElementsByClassName("color-option")); // array로 만듬
 const lineWidth = document.getElementById("line-width");
 const color = document.getElementById("color");
 const canvas = document.querySelector("canvas");
@@ -34,6 +35,13 @@ function onColorChange(e){
     ctx.strokeStyle = e.target.value;
     ctx.fillStyle = e.target.value;
 }
+function onColorClick(e){
+    console.log(e.target.dataset.color);
+    const colorValue = e.target.dataset.color;
+    ctx.strokeStyle = e.target.dataset.color;
+    ctx.fillStyle = e.target.dataset.color;
+    color.value = colorValue; // input박스의 색상도 변경되도록
+}
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
@@ -42,3 +50,5 @@ canvas.addEventListener("mouseleace", canclePainting); //마우스가 canvas떠�
 
 lineWidth.addEventListener("change", onLineWidthChange);
 color.addEventListener("change", onColorChange);
+
+colorOptions.forEach(color => color.addEventListener("click", onColorClick));
