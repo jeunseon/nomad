@@ -1,7 +1,9 @@
+const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d"); // 일종의 붓
 canvas.width = 800;
 canvas.height = 800;
+ctx.lineWidth = lineWidth.value;
 
 let isPainting = false;
 
@@ -20,9 +22,16 @@ function startPainting(){
 function canclePainting(){
     // 마우스 땠을때 이벤트
     isPainting = false;
+    ctx.beginPath();
+}
+function onLineWidthChange(e){
+    console.log(e.target.value);
+    ctx.lineWidth = e.target.value;
 }
 
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", canclePainting);
 canvas.addEventListener("mouseleace", canclePainting); //마우스가 canvas떠났을 경우
+
+lineWidth.addEventListener("change", onLineWidthChange);
