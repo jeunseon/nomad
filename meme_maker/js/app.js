@@ -3,8 +3,12 @@ const ctx = canvas.getContext("2d"); // 일종의 붓
 canvas.width = 800;
 canvas.height = 800;
 
-ctx.moveTo(50, 50); // 시작 지점. 선을 긋지 않으면서 연필위치 이동
-ctx.lineTo(150, 50); // 선을 그으면서 연필위치 이동
-ctx.lineTo(150, 150);
-ctx.lineTo(50, 150);
+ctx.fillRect(200, 200, 50, 200);
+ctx.fillRect(400, 200, 50, 200);
+ctx.fillRect(300, 300, 50, 100); // 문
+ctx.fillRect(200, 200, 200, 20); // 천장
+// 지붕
+ctx.moveTo(200, 200);
+ctx.lineTo(325, 100);
+ctx.lineTo(450, 200);
 ctx.fill();
