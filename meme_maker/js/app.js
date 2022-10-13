@@ -3,27 +3,26 @@ const ctx = canvas.getContext("2d"); // 일종의 붓
 canvas.width = 800;
 canvas.height = 800;
 
-const colors = [
-    "#2ecc71",
-    "#9b59b6",
-    "#c0392b",
-    "#34495e",
-    "#16a085",
-    "#d35400",
-    "#bdc3c7",
-    "#2980b9",
-    "#6ab04c",
-    "#7ed6df",
-];
+let isPainting = false;
 
-ctx. lineWidth = 2;
-function onClick(e){
-    ctx.beginPath(); // 움직일때마다 하나의 선이 각각 변하도록
-    ctx.moveTo(0,0);
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    ctx.strokeStyle = color;
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
+function onMove(e){ // 드래그한곳까지 선을 그려줌
+    if(isPainting){
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        return;
+    }
+    ctx.moveTo(e.offsetX, e.offsetY); // isPainting===false일 경우
+}
+function startPainting(){
+    // 마우스를 눌렀을때 이벤트
+    isPainting = true;
+}
+function canclePainting(){
+    // 마우스 땠을때 이벤트
+    isPainting = false;
 }
 
-canvas.addEventListener("mousemove", onClick);
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", canclePainting);
+canvas.addEventListener("mouseleace", canclePainting); //마우스가 canvas떠났을 경우
