@@ -1,0 +1,58 @@
+const quotes = [
+    {
+        quote:"When you have faults, do not fear to abandon them.",
+        author:"Confucius",
+    },
+    {
+        quote:"They must often change who would be constant in happiness or wisdom.",
+        author:"Confucius",
+    },
+    {
+        quote:"Age is no guarantee of maturity.",
+        author:"Lawana Blackwell",
+    },
+    {
+        quote:"Youth isn’t always all it’s touted to be.",
+        author:"Lawana Blackwell",
+    },
+    {
+        quote:"You will face many defeats in life, but never let yourself be defeated.",
+        author:"Maya Angelou",
+    },
+    {
+        quote:"The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        author:"Nelson Mandela",
+    },
+    {
+        quote:"Life is either a daring adventure or nothing at all.",
+        author:"Helen Keller",
+    },
+    {
+        quote:"The goal of life is living in agreement with nature.",
+        author:"Zeno",
+    },
+    {
+        quote:"Only I can change me life, no one can do it for me.",
+        author:"Carol Burnett",
+    },
+    {
+        quote:"All you need in this life is ignorance and confidence, then success is sure.",
+        author:"Mark Twain",
+    },
+    {
+        quote:"When you go through hardships and decide not to surrender, that is strength.",
+        author:"Arnold Schwarzenegger",
+    },
+    {
+        quote:"I didn't get there by wishing for it or hoping for it, but by working for it.",
+        author:"Estée Lauder",
+    }
+];
+
+const quote = document.querySelector('#quote span:first-child');
+const author = document.querySelector('#quote span:last-child');
+
+const todaysQuote = (quotes[Math.floor(Math.random() * quotes.length)]);
+// Math.floor() - 내림 
+quote.innerText = todaysQuote.quote;
+author.innerText = todaysQuote.author;
